@@ -1,0 +1,14 @@
+services:
+  testing-image:
+    build: 
+      context : .
+      dockerfile: Dockerfile.dev
+      args: 
+        - IMAGE_NAME
+        - IMAGE_VERSION
+    env_file:
+      - env.property
+    working_dir : /app
+    command: ./runner.sh
+    volumes:
+      - .:/app

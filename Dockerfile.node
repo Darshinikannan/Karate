@@ -1,0 +1,10 @@
+ARG IMAGE_NAME
+ARG IMAGE_VERSION
+FROM ${IMAGE_NAME}:${IMAGE_VERSION}
+RUN mkdir -p /app /node-files
+COPY package.json /node-files/package.json
+WORKDIR /node-files
+RUN npm install
+WORKDIR /app
+# RUN rm target -rf
+CMD ["./runner.sh"]
